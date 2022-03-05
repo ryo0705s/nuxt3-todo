@@ -7,9 +7,9 @@
         {{ todo }}
         <button @click="remove(index)">削除</button>
         <button @click="edit(index)">編集</button>
-        <input v-model="newTodo" />
-        <button @click="edited(index)">更新</button>
-        <div v-show="target">target</div>
+        <input v-model="newTodo" v-show="target" />
+        <button @click="edited(index)" v-show="target">更新</button>
+        <!-- <div v-show="target">target</div> -->
       </li>
     </ul>
   </div>
@@ -21,7 +21,7 @@ export default {
       todo: "",
       todos: [],
       newTodo: "",
-      target: true,
+      target: false,
     };
   },
   methods: {
@@ -34,10 +34,11 @@ export default {
     },
     edit(index) {
       this.newTodo = this.todos[index];
-      this.target = false;
+      this.target = true;
     },
     edited(index) {
       this.todos.splice(index, 1, this.newTodo);
+      this.target = false;
     },
   },
 };
