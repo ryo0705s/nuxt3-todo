@@ -7,9 +7,10 @@
         {{ todo }}
         <button @click="remove(index)">削除</button>
         <button @click="edit(index)">編集</button>
-        <input v-model="newTodo" v-show="target" />
-        <button @click="edited(index)" v-show="target">更新</button>
-        <!-- <div v-show="target">target</div> -->
+        <div v-show="target">
+          <input v-model="newTodo" />
+          <button @click="edited(index)">更新</button>
+        </div>
       </li>
     </ul>
   </div>
