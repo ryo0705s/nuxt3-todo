@@ -2,15 +2,16 @@
   <div>
     <input v-model="todo" />
     <button @click="add">追加</button>
-    <ul>
+    <!-- <ul>
       <li v-for="(status, id) in statusList" :key="id" class="status">
         <button @click="checkStatus(id)">{{ status }}</button>
       </li>
     </ul>
-    <br />
+    <br /> -->
     <ul>
       <li v-for="(todo, index) in todos" :key="index">
-        {{ todo }}<button>{{ status }}</button>
+        {{ todo }}
+        <button @click="checkStatus(index)">{{ status }}</button>
         <button @click="remove(index)">削除</button>
         <button @click="edit(index)">編集</button>
       </li>
@@ -26,7 +27,7 @@
 export default {
   data() {
     return {
-      statusList: ["未着手", "着手中", "完遂"],
+      statusList: ["着手中", "完遂", "未着手"],
       status: "未着手",
       currentStatus: "",
       todo: "",
@@ -53,10 +54,10 @@ export default {
       this.todos.splice(this.editTarget, 1, this.newTodo);
       this.target = false;
     },
-    checkStatus(id) {
-      let current = this.statusList[id];
-      this.status = current;
-      console.log(current, id, "今何？");
+    checkStatus() {
+      let current = this.status;
+      this.status = this.statusList.splice(0, 1).join("");
+      this.statusList.push(this.status);
     },
   },
 };
