@@ -3,7 +3,7 @@
     <input v-model="todo" />
     <button @click="add">追加</button>
     <ul>
-      <li v-for="(todo, index) in todos" :key="index">
+      <li v-for="(todo, index) in todos" v-bind:key="index">
         {{ todo }}
         <button
           class="status"
