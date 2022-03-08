@@ -4,13 +4,13 @@
     <button @click="add">追加</button>
     <ul>
       <li v-for="(todo, index) in todos" v-bind:key="index">
-        {{ todo }}
+        {{ todo.content }}
         <button
           class="status"
           @click="checkStatus(index)"
           v-if="index === currentIndex"
         >
-          {{ status }}
+          {{ todo.status }}
         </button>
         <button class="status" @click="checkStatus(index)" v-else>
           未着手
@@ -34,7 +34,7 @@ export default {
       status: "未着手",
       currentIndex: "",
       todo: "",
-      todos: [],
+      todos: [{ content: "", status: "未着手" }],
       newTodo: "",
       target: false,
       editTarget: "",
@@ -42,25 +42,29 @@ export default {
   },
   methods: {
     add() {
-      this.todos.push(this.todo);
+      this.todos.push({ content: this.todo, status: this.todos.status });
       this.todo = "";
+      console.log(this.todo, "deteru?");
     },
     remove(index) {
       this.todos.splice(index, 1);
     },
     edit(index) {
-      this.newTodo = this.todos[index];
+      this.newTodo = this.todos[index].content;
       this.target = true;
       this.editTarget = index;
     },
     edited() {
-      this.todos.splice(this.editTarget, 1, this.newTodo);
+      this.todos.splice(this.editTarget, 1, {
+        content: this.newTodo,
+        status: this.todos.status,
+      });
       this.target = false;
     },
     checkStatus(index) {
-      let current = this.status;
-      this.status = this.statusList.splice(0, 1).join("");
-      this.statusList.push(this.status);
+      let current = this.todos.status;
+      this.todos.status = this.statusList.splice(0, 1).join("");
+      this.statusList.push(this.todos.status);
       this.currentIndex = index;
     },
   },
