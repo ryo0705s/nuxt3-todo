@@ -8,7 +8,7 @@
         <button
           class="status"
           @click="checkStatus(index)"
-          v-if="index === currentIndex"
+          v-if="todo.status != undefined"
         >
           {{ todo.status }}
         </button>
@@ -31,10 +31,9 @@ export default {
   data() {
     return {
       statusList: ["着手中", "完遂", "未着手"],
-      status: "未着手",
       currentIndex: "",
       todo: "",
-      todos: [{ content: "", status: "未着手" }],
+      todos: [],
       newTodo: "",
       target: false,
       editTarget: "",
@@ -44,7 +43,6 @@ export default {
     add() {
       this.todos.push({ content: this.todo, status: this.todos.status });
       this.todo = "";
-      console.log(this.todo, "deteru?");
     },
     remove(index) {
       this.todos.splice(index, 1);
@@ -62,9 +60,9 @@ export default {
       this.target = false;
     },
     checkStatus(index) {
-      let current = this.todos.status;
-      this.todos.status = this.statusList.splice(0, 1).join("");
-      this.statusList.push(this.todos.status);
+      let current = this.todos[index].status;
+      this.todos[index].status = this.statusList.splice(0, 1).join("");
+      this.statusList.push(this.todos[index].status);
       this.currentIndex = index;
     },
   },
