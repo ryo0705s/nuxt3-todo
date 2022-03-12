@@ -2,6 +2,7 @@
   <div>
     <input v-model="todo" />
     <button @click="add">追加</button>
+    <div><hoge /></div>
     <ul>
       <li v-for="(todo, index) in todos" v-bind:key="index">
         {{ todo.content }}
@@ -27,7 +28,11 @@
   </div>
 </template>
 <script>
+import hoge from "./propsComponent";
 export default {
+  components: {
+    hoge,
+  },
   data() {
     return {
       statusList: ["着手中", "完遂", "未着手"],
