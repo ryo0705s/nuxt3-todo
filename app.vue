@@ -4,9 +4,12 @@
     <button @click="add">追加</button>
     <!-- <Hoge v-bind:val="postItem"></Hoge> -->
     <!-- <Hoge val="fffff" /> -->
-    <p>parent_num: {{ parent_num }}</p>
-    <Hoge @my-click="childValue" />
+    <!-- <p>parent_num: {{ parent_num }}</p>
+    <Hoge @my-click="childValue" /> -->
     <!-- <Hoge @my-click="parent_num = $event" /> -->
+    <Hoge></Hoge>
+    <Hoge><template v-slot:hehe> 佐々木良 </template></Hoge>
+    <Hoge><template v-slot:fufu> グローリー </template></Hoge>
     <ul>
       <li v-for="(todo, index) in todos" v-bind:key="index">
         {{ todo.content }}
@@ -49,7 +52,7 @@ export default {
       target: false,
       editTarget: "",
       // postItem: "d",
-      parent_num: 100,
+      // parent_num: 100,
     };
   },
   methods: {
@@ -78,9 +81,9 @@ export default {
       this.statusList.push(this.todos[index].status);
       this.currentIndex = index;
     },
-    childValue(value) {
-      this.parent_num = value;
-    },
+    // childValue(value) {
+    //   this.parent_num = value;
+    // },
   },
   // watch: {
   //   editTarget(newVal, oldVal) {
