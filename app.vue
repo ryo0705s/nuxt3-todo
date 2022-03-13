@@ -5,7 +5,8 @@
     <!-- <Hoge v-bind:val="postItem"></Hoge> -->
     <!-- <Hoge val="fffff" /> -->
     <p>parent_num: {{ parent_num }}</p>
-    <Hoge @my-click="parent_num = $event" />
+    <Hoge @my-click="childValue" />
+    <!-- <Hoge @my-click="parent_num = $event" /> -->
     <ul>
       <li v-for="(todo, index) in todos" v-bind:key="index">
         {{ todo.content }}
@@ -76,6 +77,9 @@ export default {
       this.todos[index].status = this.statusList.splice(0, 1).join("");
       this.statusList.push(this.todos[index].status);
       this.currentIndex = index;
+    },
+    childValue(value) {
+      this.parent_num = value;
     },
   },
   // watch: {
