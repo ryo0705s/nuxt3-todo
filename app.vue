@@ -3,7 +3,9 @@
     <input v-model="todo" />
     <button @click="add">追加</button>
     <!-- <Hoge v-bind:val="postItem"></Hoge> -->
-    <Hoge val="fffff" />
+    <!-- <Hoge val="fffff" /> -->
+    <p>parent_num: {{ parent_num }}</p>
+    <Hoge @my-click="parent_num = $event" />
     <ul>
       <li v-for="(todo, index) in todos" v-bind:key="index">
         {{ todo.content }}
@@ -46,6 +48,7 @@ export default {
       target: false,
       editTarget: "",
       // postItem: "d",
+      parent_num: 100,
     };
   },
   methods: {
