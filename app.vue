@@ -2,14 +2,14 @@
   <div>
     <input v-model="todo" />
     <button @click="add">追加</button>
+    <Hoge></Hoge>
+    <Hoge><template v-slot:hehe> 佐々木良 </template></Hoge>
+    <Hoge><template v-slot:fufu> グローリー </template></Hoge>
     <!-- <Hoge v-bind:val="postItem"></Hoge> -->
     <!-- <Hoge val="fffff" /> -->
     <!-- <p>parent_num: {{ parent_num }}</p>
     <Hoge @my-click="childValue" /> -->
     <!-- <Hoge @my-click="parent_num = $event" /> -->
-    <Hoge></Hoge>
-    <Hoge><template v-slot:hehe> 佐々木良 </template></Hoge>
-    <Hoge><template v-slot:fufu> グローリー </template></Hoge>
     <ul>
       <li v-for="(todo, index) in todos" v-bind:key="index">
         {{ todo.content }}
@@ -32,6 +32,14 @@
       <button @click="edited">更新</button>
     </div>
     <div v-show="target && editTarget === ''"></div>
+    <v-menu>
+      <template v-slot:activator="{ on }">
+        <v-btn v-on="on">open</v-btn>
+      </template>
+      <v-list>
+        <v-list-item> </v-list-item>
+      </v-list>
+    </v-menu>
   </div>
 </template>
 <script>
