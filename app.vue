@@ -32,14 +32,14 @@
       <button @click="edited">更新</button>
     </div>
     <div v-show="target && editTarget === ''"></div>
-    <v-menu>
+    <!-- <v-menu>
       <template v-slot:activator="{ on }">
         <v-btn v-on="on">open</v-btn>
       </template>
       <v-list>
         <v-list-item> </v-list-item>
       </v-list>
-    </v-menu>
+    </v-menu> -->
   </div>
 </template>
 <script>
