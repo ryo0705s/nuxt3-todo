@@ -2,7 +2,10 @@
   <div>
     <input v-model="todo" />
     <button @click="add">追加</button>
-    <div><hoge /></div>
+    <Hoge v-bind:val="postItem"></Hoge>
+    <!-- <div id="app"><Hoge name="ddd" /></div> -->
+    <!-- <Hoge hoge1="dddd" hoge2="gghhh" /> -->
+    <!-- <div><hoge /></div> -->
     <ul>
       <li v-for="(todo, index) in todos" v-bind:key="index">
         {{ todo.content }}
@@ -28,10 +31,12 @@
   </div>
 </template>
 <script>
-import hoge from "./propsComponent";
+import Hoge from "./propsComponent";
 export default {
+  // name: "App",
   components: {
-    hoge,
+    Hoge,
+    // Child,
   },
   data() {
     return {
@@ -42,6 +47,7 @@ export default {
       newTodo: "",
       target: false,
       editTarget: "",
+      postItem: "d",
     };
   },
   methods: {
