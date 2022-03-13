@@ -2,10 +2,8 @@
   <div>
     <input v-model="todo" />
     <button @click="add">追加</button>
-    <Hoge v-bind:val="postItem"></Hoge>
-    <!-- <div id="app"><Hoge name="ddd" /></div> -->
-    <!-- <Hoge hoge1="dddd" hoge2="gghhh" /> -->
-    <!-- <div><hoge /></div> -->
+    <!-- <Hoge v-bind:val="postItem"></Hoge> -->
+    <Hoge val="fffff" />
     <ul>
       <li v-for="(todo, index) in todos" v-bind:key="index">
         {{ todo.content }}
@@ -47,7 +45,7 @@ export default {
       newTodo: "",
       target: false,
       editTarget: "",
-      postItem: "d",
+      // postItem: "d",
     };
   },
   methods: {
